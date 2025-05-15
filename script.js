@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Variables
     let currentPage = 1;
-    const booksPerPage = 10;
+    const booksPerPage = 6;
     let isLoading = false;
     let allBooks = [];
     let displayedBooks = 0;
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modal-cover').src = book.coverUrl;
         document.getElementById('modal-cover').alt = book.title;
         document.getElementById('modal-read-link').href = book.readLink;
-        
+        document.getElementById('modal-uploader').textContent = book.uploader || 'Anonymous';
         modal.style.display = 'block';
     }
 });

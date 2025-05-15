@@ -344,3 +344,15 @@ h1 {
         display: none; /* Hide icons on very small screens */
     }
 }
+
+.uploader-info {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+.uploader-info strong {
+    color: var(--text-color);
+}
