@@ -127,8 +127,25 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modal-description').textContent = book.description;
         document.getElementById('modal-cover').src = book.coverUrl;
         document.getElementById('modal-cover').alt = book.title;
-        document.getElementById('modal-read-link').href = book.readLink;
-        document.getElementById('modal-uploader').textContent = book.uploader || 'Anonymous';
+        const readBtn = document.getElementById('modal-read-link');
+
+        if (book.readLink) {
+            // Book is available
+            readBtn.href = book.readLink;
+            readBtn.textContent = 'Read This Book';
+            readBtn.className = 'read-btn'; // Reset all classes
+            readBtn.onclick = null; // Remove any click handlers
+            readBtn.style.pointerEvents = 'auto'; // Re-enable clicking
+        } else {
+            // Book is unavailable
+            readBtn.removeAttribute('href');
+            readBtn.textContent = 'Not Available';
+            readBtn.className = 'not-available'; // Reset all classes
+            readBtn.onclick = (e) => e.preventDefault();
+            readBtn.style.pointerEvents = 'none'; // Disable clicking
+        }
+        // Handle uploader info
+        document.getElementById('modal-uploader').textContent = book.uploader || 'Anonymous';            
         modal.style.display = 'block';
     }
 });
@@ -158,18 +175,20 @@ function handleCardClick(book) {
 
 // Then update your createBookCard function to use this:
 function createBookCard(book) {
-    const bookCard = document.createElement('div');
-    bookCard.className = 'book-card';
-    bookCard.classList.add(bookContainer.classList.contains('grid-view') ? 'grid-view' : 'list-view');
-    bookCard.innerHTML = `
-        <img src="${book.coverUrl}" alt="${book.title}" class="book-cover" loading="lazy">
-        <div class="book-info">
-            <h3 class="book-title">${book.title}</h3>
-            <p class="book-author">by ${book.author}</p>
-            <p class="book-description">${book.description.substring(0, 150)}...</p>
-        </div>
-    `;
+    // const bookCard = document.createElement('div');
+    // bookCard.className = 'book-card';
+    // bookCard.classList.add(bookContainer.classList.contains('grid-view') ? 'grid-view' : 'list-view');
+    // const availabilityBadge = book.readLink ? '' : '<span class="availability-badge">Not Available</span>';
+    // bookCard.innerHTML = `
+    //     <img src="${book.coverUrl}" alt="${book.title}" class="book-cover">
+    //     ${availabilityBadge}
+    //     <div class="book-info">
+    //         <h3 class="book-title">${book.title}</h3>
+    //         <p class="book-author">by ${book.author}</p>
+    //         <p class="book-description">${book.description.substring(0, 150)}...</p>
+    //     </div>
+    // `;
     
-    handleCardClick(book); // Use the new handler
+    bookCard.addEventListener('click', () => openModal(book));
     bookContainer.appendChild(bookCard);
 }
