@@ -343,6 +343,11 @@ h1 {
     .view-toggle button i {
         display: none; /* Hide icons on very small screens */
     }
+
+    h1 {
+        font-size: 1rem;
+        color: var(--primary-color);
+    }
 }
 
 .uploader-info {
