@@ -405,3 +405,101 @@ h1 {
 .book-card {
     position: relative;
 }
+
+/* Footer Styles */
+.site-footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 2rem 0;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-text {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Layout styles */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Viewport height */
+    margin: 0;
+}
+
+.content-wrapper {
+    flex: 1; /* Takes all available space */
+}
+
+.site-footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 2rem 0;
+    text-align: center;
+    /* Keep your existing footer styles */
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+/* Special text styling */
+.metta {
+    color: #f1c40f;
+    font-weight: 600;
+}
+
+.passion {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.pedu {
+    color: #3498db;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.karen {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+/* Animation on hover */
+.footer-text span {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-text span:hover {
+    transform: translateY(-3px);
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        padding: 1.5rem 0;
+    }
+    
+    .footer-text {
+        font-size: 0.9rem;
+    }
+}

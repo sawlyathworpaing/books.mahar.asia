@@ -179,3 +179,25 @@ function handleCardClick(book) {
         bookCard.addEventListener("click", () => openModal(book));
     }
 }
+
+function adjustFooterPosition() {
+    const footer = document.querySelector('.site-footer');
+    const contentHeight = document.querySelector('.content-wrapper').offsetHeight;
+    const windowHeight = window.innerHeight;
+    
+    if (contentHeight < windowHeight) {
+        footer.style.position = 'fixed';
+    } else {
+        footer.style.position = 'relative';
+    }
+}
+
+// Run on load and when new books are added
+window.addEventListener('load', adjustFooterPosition);
+window.addEventListener('resize', adjustFooterPosition);
+
+// Add this to your loadMoreBooks function:
+function loadMoreBooks() {
+    // ... your existing code ...
+    adjustFooterPosition();
+}
